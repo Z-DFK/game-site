@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory; // Указываем всегда
-    protected $fillable = ['name', 'is_active', 'is_popular', 'image', 'description'];
+    protected $fillable = ['name', 'is_active', 'is_popular', 'image'];
     public function brands()
     {
         return $this->hasMany(Brand::class);

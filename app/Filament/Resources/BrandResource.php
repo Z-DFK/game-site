@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -41,16 +42,17 @@ class BrandResource extends Resource
                         ->label('Название категории')
                         ->maxLength(255)
                         ->required(),
-                    TextInput::make('description')
-                        ->label('Описание категории')
-                        ->maxLength(255)
-                        ->required(),
-                        FileUpload::make('image')
+                    FileUpload::make('image')
                         ->image()
                         ->imageEditor()
                         ->directory('images/brand/')
                         ->label('Изображение категории')
                         ->columnSpanFull(),
+                    Textarea::make('description')
+                        ->label('Описание категории')
+                        ->minLength(10)
+                        ->columnSpanFull()
+                        ->rows(10),
                     Fieldset::make('Настройки')->schema([
                         Toggle::make('is_active')
                             ->default(true)
@@ -70,8 +72,6 @@ class BrandResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->label('Название категории'),
-                TextColumn::make('description')
-                    ->label('Описание категории'),
                 ImageColumn::make('image')
                     ->label('Изображение')
                     ->size(50)

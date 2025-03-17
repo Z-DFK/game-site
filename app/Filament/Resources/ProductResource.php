@@ -13,6 +13,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -48,15 +49,14 @@ class ProductResource extends Resource
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required()
                             ->label('Название игры'),
-                            TextInput::make('description')
+                        Textarea::make('description')
                             ->label('Описание игры')
-                            ->maxLength(255)
-                            ->required(),
-                        TextInput::make('prise')
-                            ->required()
-                            ->integer()
+                            ->minLength(10)
+                            ->columnSpanFull()
+                            ->rows(10),
+                        TextInput::make('price')
                             ->label('Стоимость игры в рублях')
-                            ->nullable(),
+                            ->maxLength(255),
                     ])->columns(2)->columnSpanFull(),
                     Section::make()->schema([
                         FileUpload::make('image')
@@ -100,10 +100,8 @@ class ProductResource extends Resource
                     ->label('Категория игры')
                     ->sortable()
                     ->searchable(),
-                    TextColumn::make('description')
+                TextColumn::make('description')
                     ->label('Описание игры'),
-
-
                 ImageColumn::make('image')
                     ->size(52)
                     ->circular()
