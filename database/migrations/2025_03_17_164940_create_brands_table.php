@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('Название категории');
             $table->string('image')->comment('Изображение категории');
-            $table->text('description')->comment('Описание категории');
             $table->boolean('is_active')->default(true)->comment('Активная категория');
             $table->boolean('is_popular')->default(false)->comment('Популярная категория');
             $table->timestamps();

@@ -54,8 +54,17 @@ class ProductResource extends Resource
                             ->minLength(10)
                             ->columnSpanFull()
                             ->rows(10),
+                        TextInput::make('weight')
+                            ->label('Вес товара')
+                            ->maxLength(255),
+                        TextInput::make('material')
+                            ->label('Материал товара')
+                            ->maxLength(255),
                         TextInput::make('price')
                             ->label('Стоимость игры в рублях')
+                            ->maxLength(255),
+                        TextInput::make('colour')
+                            ->label('Цвет игры')
                             ->maxLength(255),
                     ])->columns(2)->columnSpanFull(),
                     Section::make()->schema([

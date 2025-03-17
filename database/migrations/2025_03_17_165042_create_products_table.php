@@ -16,8 +16,11 @@ return new class extends Migration
             $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete();
             $table->text('price')->comment('Цена игры');
             $table->string('image');
+            $table->string('colour')->comment('Цвет игры');
             $table->boolean('is_active');
             $table->boolean('is_popular');
+            $table->string('weight')->comment('Вес товара');
+            $table->string('material')->comment('Материал товара');
             $table->string('name')->comment('Название игры');
             $table->text('description')->comment('Описание игры');
             $table->timestamps();

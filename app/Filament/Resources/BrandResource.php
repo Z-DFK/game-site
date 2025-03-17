@@ -48,11 +48,6 @@ class BrandResource extends Resource
                         ->directory('images/brand/')
                         ->label('Изображение категории')
                         ->columnSpanFull(),
-                    Textarea::make('description')
-                        ->label('Описание категории')
-                        ->minLength(10)
-                        ->columnSpanFull()
-                        ->rows(10),
                     Fieldset::make('Настройки')->schema([
                         Toggle::make('is_active')
                             ->default(true)
